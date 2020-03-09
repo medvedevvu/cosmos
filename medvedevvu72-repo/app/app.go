@@ -27,7 +27,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/supply"
 )
 
-const appName = "app"
+const appName = "nameservice"
 
 var (
 	// TODO: rename your cli
@@ -78,7 +78,7 @@ func MakeCodec() *codec.Codec {
 }
 
 // NewApp extended ABCI application
-type NewApp struct {
+type newAppnameServiceApp struct {
 	*bam.BaseApp
 	cdc *codec.Codec
 
@@ -220,7 +220,6 @@ func NewInitApp(
 		// TODO: Add your module(s)
 		staking.NewAppModule(app.stakingKeeper, app.accountKeeper, app.supplyKeeper),
 		slashing.NewAppModule(app.slashingKeeper, app.accountKeeper, app.stakingKeeper),
-
 	)
 	// During begin block slashing happens after distr.BeginBlocker so that
 	// there is nothing left over in the validator fee pool, so as to keep the
